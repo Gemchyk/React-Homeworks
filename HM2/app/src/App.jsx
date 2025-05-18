@@ -6,7 +6,14 @@ import Smile from './Smile';
 
 
 
+
 export default class App extends Component{
+  
+  
+
+  userVotes = localStorage.getItem("votes") || null;
+
+  
 
   state = {
     smiles: [
@@ -16,12 +23,37 @@ export default class App extends Component{
     ],
     winnerId: null
   };
+
+ 
+
+ 
+  constructor(props) {
+    super(props);
+  
+    const savedSmiles = localStorage.getItem('votes');
+    this.state = {
+      smiles: savedSmiles ? JSON.parse(savedSmiles) : [
+        { id: 1, name: "😀", votes: 0 },
+        { id: 2, name: "😎", votes: 0 },
+        { id: 3, name: "🥳", votes: 0 }
+      ],
+      winnerId: null,
+    };
+  }
+ 
+  
+
+  localSave = (arr) => {
+    localStorage.setItem("votes", JSON.stringify(arr));
+  }
   
   updateSmiles = (id) => {
     const updated = this.state.smiles.map(smile =>
       smile.id === id ? { ...smile, votes: smile.votes + 1 } : smile
     );
+    this.localSave(updated);
     this.setState({ smiles: updated });
+    console.log(this.userVotes);
   };
 
   
@@ -38,6 +70,15 @@ export default class App extends Component{
     this.setState({winnerId});
   }
 
+  
+  clearResults = () => {
+    const cleared = this.state.smiles.map(smile => 
+      smile.votes > 0 ? { ...smile, votes: 0} : smile
+    );
+    console.log(cleared);
+    this.localSave(cleared);
+    this.setState({smiles: cleared, winnerId: null});
+  }
  
 
   
@@ -51,6 +92,7 @@ export default class App extends Component{
             <>
             <h1>Winner:</h1>
               <Smile smile={this.state.smiles.find(i => i.id === this.state.winnerId)} onChange={this.updateSmiles} isWinner={true}/>
+              <button onClick={this.clearResults}>Clear Results</button>
             </> 
           }
         </div>
