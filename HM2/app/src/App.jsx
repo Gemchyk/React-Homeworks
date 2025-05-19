@@ -32,11 +32,7 @@ export default class App extends Component{
   
     const savedSmiles = localStorage.getItem('votes');
     this.state = {
-      smiles: savedSmiles ? JSON.parse(savedSmiles) : [
-        { id: 1, name: "😀", votes: 0 },
-        { id: 2, name: "😎", votes: 0 },
-        { id: 3, name: "🥳", votes: 0 }
-      ],
+      smiles: savedSmiles ? JSON.parse(savedSmiles) :this.state,
       winnerId: null,
     };
   }
