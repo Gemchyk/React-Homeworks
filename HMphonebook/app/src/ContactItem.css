@@ -1,0 +1,21 @@
+.contact {
+    width: 500px;
+    height: 4em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    will-change: filter;
+    transition: filter 300ms;
+    border: 2px solid #64ffaaaa;
+    border-radius: 15%;
+    margin-top: 10px;
+    text-align: left;
+}
+.contact:hover {
+    filter: drop-shadow(0 0 2em #64ffaaaa);
+}
+
+.contact > button{
+    width: 25%;
+    height: 65%;
+}
