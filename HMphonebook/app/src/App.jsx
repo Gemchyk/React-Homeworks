@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import ContactList from './ContactList';
+import AddForm from './AddForm';
+import { useEffect } from 'react';
 
 function App() {
 
@@ -26,10 +28,17 @@ function App() {
   ]
   
   const [contacts, setContacts] = useState(startConctacts);
+  const [addPageSetted, setPage] = useState(true);
+  
+  useEffect(() => {
+    console.log(contacts);
+
+  }, [contacts])
 
   return (
     <>
-      <ContactList contacts={contacts} />
+      {!addPageSetted && <ContactList setPage={setPage} contacts={contacts} setContacts={setContacts} />}
+      {addPageSetted && <AddForm setPage={setPage} contacts={contacts} setContacts={setContacts} />}
     </>
   )
 }

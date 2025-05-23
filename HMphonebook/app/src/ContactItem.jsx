@@ -1,14 +1,14 @@
 import React from 'react';
 import './ContactItem.css';
+import {useRef} from 'react';
 
-function ContactItem({name, surName, number}) {
-
+const ContactItem = ({id, name, surName, number, handleDelete}) => {
 
     return (
         <div className='contact'>
             <h3>{name} {surName}</h3>
             <h4>{number}</h4>
-            <button>Options</button>
+            <button type='button' id={id} onClick={handleDelete}>Delete</button>
         </div>
     );
 }
