@@ -18,7 +18,6 @@ const AddForm = ({contacts, setContacts, setPage}) => {
     const lang = useContext(LanguageContext);
 
     function handleSubmit(){
-        console.log(lang);
         const newContact = {
             id: Date.now(),
             name: nameRef.current.value,
@@ -26,7 +25,6 @@ const AddForm = ({contacts, setContacts, setPage}) => {
             number: numberRef.current.value
         }
         setContacts([...contacts, newContact]);
-        setPage(false);
     }
 
 

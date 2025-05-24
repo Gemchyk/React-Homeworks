@@ -34,7 +34,6 @@ function App() {
   
   
   const [contacts, setContacts] = useState(startConctacts);
-  const [addPageSetted, setPage] = useState(true);
   const [language, setLanguage] = useState("EN");
   const [theme, setTheme] = useState("Dark");
 
@@ -70,8 +69,8 @@ function App() {
               </select>
             </div>
             <Routes>
-              <Route path='/' element={<ContactList setPage={setPage} contacts={contacts} setContacts={setContacts} />} />
-              <Route path='/add' element={<AddForm setPage={setPage} contacts={contacts} setContacts={setContacts} />} />
+              <Route path='/' element={<ContactList contacts={contacts} setContacts={setContacts} />} />
+              <Route path='/add' element={<AddForm contacts={contacts} setContacts={setContacts} />} />
             </Routes>
           </BrowserRouter>
         </LanguageContext.Provider>
