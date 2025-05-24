@@ -51,8 +51,8 @@ function App() {
 
   return (
     <>
-      <ThemeContext.Provider value={{value: theme, change: setTheme}}>
-        <LanguageContext.Provider value={{value: language, change: setLanguage}}>
+      <ThemeContext.Provider value={{value: theme}}>
+        <LanguageContext.Provider value={{value: language}}>
           <BrowserRouter>
             <div className='flex'>
               <Link to='/'> <button>{language === 'UA' ? "Список" : "List"}</button></Link>

@@ -7,16 +7,16 @@ import { ThemeContext } from './contexts/ThemeContext';
 
 
 
-const ContactItem = ({id, name, surName, number, handleDelete}) => {
+const ContactItem = ({contact, handleDelete}) => {
 
     const lang = useContext(LanguageContext);
     const theme = useContext(ThemeContext);
 
     return (
         <div className={theme.value === 'Dark' ? "contact" : "contactLight"}>
-            <h3>{name} {surName}</h3>
-            <h4>{number}</h4>
-            <button type='button' id={id} onClick={handleDelete}>{lang.value === 'UA' ? "Видалити" : "Delete"}</button>
+            <h3>{contact.name} {contact.surName}</h3>
+            <h4>{contact.number}</h4>
+            <button type='button' id={contact.id} onClick={handleDelete}>{lang.value === 'UA' ? "Видалити" : "Delete"}</button>
         </div>
     );
 }

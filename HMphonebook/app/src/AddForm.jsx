@@ -8,7 +8,7 @@ import './ContactItemLight.css';
 
 
 
-const AddForm = ({contacts, setContacts, setPage}) => {
+const AddForm = ({contacts, setContacts}) => {
 
     const nameRef = useRef();
     const surNameRef = useRef();
